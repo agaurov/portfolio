@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Егор Агауров — Контент-маркетолог</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --dark: #141B2D;
+    --darker: #0D1117;
+    --orange: #FF6B35;
+    --cyan: #00BCD4;
+    --light: #F5F4F0;
+    --muted: #6B7280;
+    --border: rgba(255,255,255,0.08);
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+  }
+
+  body {
+    font-family: 'Golos Text', sans-serif;
+    background: var(--light);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--darker);
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,107,53,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 30%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,188,212,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 40px 56px;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .photo-wrap { position: relative; }
+
+  .photo-wrap img {
+    width: 160px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 12px;
+    border: 2px solid rgba(255,107,53,0.4);
+    display: block;
+  }
+
+  .photo-accent {
+    position: absolute;
+    bottom: -8px; right: -8px;
+    width: 48px; height: 48px;
+    background: var(--orange);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    border: 1px solid rgba(255,107,53,0.35);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 0.95;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+  }
+
+  .hero-name span { color: var(--orange); }
+
+  .hero-role {
+    font-size: 15px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .hero-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .contact-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+
+  .contact-pill:hover { border-color: var(--orange); color: #fff; }
+
+  .contact-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    flex-shrink: 0;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 24px;
+  }
+
+  .hstat { text-align: left; }
+
+  .hstat-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .hstat-val span { color: var(--orange); font-size: 22px; }
+
+  .hstat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
+  .hstat-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+    align-self: stretch;
+  }
+
+  /* STRIP */
+  .strip {
+    background: var(--orange);
+    padding: 10px 40px;
+    overflow: hidden;
+  }
+
+  .strip-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    gap: 32px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    flex-wrap: wrap;
+  }
+
+  /* MAIN */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0,0,0,0.08);
+  }
+
+  /* EXP CARDS */
+  .exp-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+
+  .exp-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--orange);
+    border-radius: 3px 0 0 3px;
+  }
+
+  .exp-card.cyan::before { background: var(--cyan); }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    gap: 12px;
+  }
+
+  .exp-company { font-size: 17px; font-weight: 600; color: var(--text); }
+
+  .exp-period {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    background: var(--light);
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .exp-role { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+
+  .exp-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .metric-chip {
+    background: #FFF3EE;
+    color: #c44a15;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  .metric-chip.cyan { background: #E6F9FB; color: #0a7f8f; }
+
+  .exp-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .exp-points li {
+    font-size: 13px;
+    color: #444;
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .exp-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: rgba(0,0,0,0.2);
+    font-size: 11px;
+    top: 1px;
+  }
+
+  /* SIDEBAR */
+  .sidebar-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+
+  .skill-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .skill-name { font-size: 13px; color: var(--text); width: 80px; flex-shrink: 0; }
+
+  .skill-bar-bg {
+    flex: 1;
+    height: 5px;
+    background: rgba(0,0,0,0.07);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--orange);
+    animation: barGrow 1s ease forwards;
+    transform-origin: left;
+  }
+
+  @keyframes barGrow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .skill-bar-fill.cyan { background: var(--cyan); }
+
+  .tool-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .tool-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--light);
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .channel-block {
+    background: var(--darker);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .channel-block::after {
+    content: '@communalAI';
+    position: absolute;
+    bottom: -14px; right: -4px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    color: rgba(255,255,255,0.04);
+    letter-spacing: 0.02em;
+    pointer-events: none;
+  }
+
+  .channel-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  .channel-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+
+  .channel-name span { color: var(--orange); }
+
+  .ch-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .ch-stat {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .ch-stat-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .ch-stat-val.accent { color: var(--orange); }
+  .ch-stat-val.cyan { color: var(--cyan); }
+
+  .ch-stat-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+
+  .edu-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+
+  .edu-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .edu-school { font-size: 13px; font-weight: 600; color: var(--text); }
+  .edu-prog { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+  /* WORKS */
+  .works-section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 40px 56px;
+  }
+
+  .works-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .works-tab {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: transparent;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.15s;
+  }
+
+  .works-tab.active, .works-tab:hover {
+    background: var(--darker);
+    color: #fff;
+    border-color: var(--darker);
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .work-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.07);
+    transition: transform 0.18s, box-shadow 0.18s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  }
+
+  /* Карточка с текстом — кликабельная */
+  .work-card.has-link { cursor: pointer; }
+
+  .work-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    background: #f0eeea;
+  }
+
+  /* Плейсхолдер когда картинка не загружена */
+  .work-img[src=""], .work-img:not([src]) {
+    min-height: 160px;
+  }
+
+  .img-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #e8e6e1 0%, #d8d5ce 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    color: rgba(0,0,0,0.2);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .work-meta {
+    padding: 10px 14px 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 3px;
+  }
+
+  .work-tag.cyan { color: var(--cyan); }
+  .work-tag.muted { color: var(--muted); }
+
+  .work-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .work-desc {
+    font-size: 12px;
+    color: #666;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  /* Ссылка-стрелка для текстовых карточек */
+  .work-link-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--orange);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .work-link-row svg { flex-shrink: 0; }
+
+  /* ПРЕЗЕНТАЦИИ */
+  .pres-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .pres-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pres-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .pres-name { font-size: 15px; font-weight: 600; color: var(--text); margin-top: 2px; }
+
+  .pres-slides {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 14px 20px 16px;
+  }
+
+  .pres-slide {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #f5f4f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pres-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .pres-slide-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: rgba(0,0,0,0.25);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding: 8px;
+  }
+
+  .pres-footer {
+    padding: 0 20px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .pres-view-btn {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--orange);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid rgba(255,107,53,0.3);
+    padding: 5px 12px;
+    border-radius: 20px;
+    transition: all 0.15s;
+  }
+
+  .pres-view-btn:hover {
+    background: var(--orange);
+    color: #fff;
+    border-color: var(--orange);
+  }
+
+  /* ТЕКСТЫ */
+  .text-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.18s, box-shadow 0.18s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .text-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  }
+
+  .text-card-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .text-card-type.analytics { color: #c44a15; background: #FFF3EE; padding: 2px 8px; border-radius: 4px; }
+  .text-card-type.news { color: #0a7f8f; background: #E6F9FB; padding: 2px 8px; border-radius: 4px; }
+
+  .text-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .text-card-excerpt {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .text-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+
+  .text-card-source {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .text-card-arrow {
+    font-size: 11px;
+    color: var(--orange);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  /* FADE UP */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up:nth-child(1) { animation-delay: 0.05s; }
+  .fade-up:nth-child(2) { animation-delay: 0.15s; }
+  .fade-up:nth-child(3) { animation-delay: 0.25s; }
+  .fade-up:nth-child(4) { animation-delay: 0.35s; }
+
+  footer {
+    background: var(--darker);
+    padding: 28px 40px;
+    text-align: center;
+  }
+
+  footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
+  footer a { color: var(--orange); text-decoration: none; }
+
+  .hidden { display: none; }
+
+  /* РАСКРЫВАЮЩИЕСЯ ТЕКСТОВЫЕ КАРТОЧКИ */
+  .texts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tcard {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+
+  .tcard:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+
+  .tcard-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .tcard-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tcard-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .tcard-lead {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .tcard-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  .tcard-arrow {
+    transition: transform 0.25s ease;
+    color: var(--orange);
+  }
+
+  .tcard.open .tcard-arrow { transform: rotate(180deg); }
+  .tcard.open .tcard-toggle-label { content: 'Свернуть'; }
+  .tcard.open .tcard-lead { -webkit-line-clamp: unset; }
+
+  .tcard-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .tcard.open .tcard-body { max-height: 2000px; }
+
+  .tcard-content {
+    padding: 0 24px 24px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tcard-content p {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  .tcard-content strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  @media (max-width: 680px) {
+    .tcard-head { padding: 16px; flex-direction: column; }
+    .tcard-toggle { align-self: flex-start; }
+    .tcard-content { padding: 14px 16px 16px; }
+  }
+
+  @media (max-width: 680px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 28px; padding: 36px 20px; }
+    .hero-name { font-size: 44px; }
+    .main { grid-template-columns: 1fr; padding: 28px 20px; }
+    .works-section { padding: 0 20px 40px; }
+    .works-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .pres-slides { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="photo-wrap fade-up">
+      <!--
+        ФОТО: замени images/photo.jpg на своё фото
+        Рекомендуемый размер: 320×400px
+      -->
+      <img src="images/photo.jpg" alt="Егор Агауров"
+           onerror="this.style.background='linear-gradient(135deg,#1e2a42,#2a3a58)';this.style.minHeight='200px';">
+      <div class="photo-accent">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4 10h12M10 4l6 6-6 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hero-text fade-up">
+      <div class="hero-tag">Контент-маркетолог · SMM-менеджер</div>
+      <div class="hero-name">Егор<br><span>Агауров</span></div>
+      <div class="hero-role">Превращаю сложные B2B-темы в контент, который читают</div>
+
+      <div class="hero-contacts">
+        <a href="mailto:agaurovegor@yandex.ru" class="contact-pill">
+          <span class="contact-dot" style="background:var(--orange)"></span>
+          agaurovegor@yandex.ru
+        </a>
+        <a href="https://t.me/agaurov" class="contact-pill" target="_blank" rel="noopener">
+          <span class="contact-dot"></span>
+          t.me/agaurov
+        </a>
+        <a href="tel:+79645038484" class="contact-pill">
+          <span class="contact-dot" style="background:var(--muted)"></span>
+          +7 964 503-84-84
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hstat">
+          <div class="hstat-val">3 <span>года</span></div>
+          <div class="hstat-label">в B2B-контенте</div>
+        </div>
+        <div class="hstat-divider"></div>
+        <div class="hstat">
+          <div class="hstat-val">4 <span>канала</span></div>
+          <div class="hstat-label">с нуля до результата</div>
+        </div>
+        <div class="hstat-divider"></div>
+        <div class="hstat">
+          <div class="hstat-val">20 тыс.<span>+</span></div>
+          <div class="hstat-label">уник. посетителей/мес</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <span>Telegram-каналы</span>
+    <span>·</span>
+    <span>Email-рассылки</span>
+    <span>·</span>
+    <span>Figma</span>
+    <span>·</span>
+    <span>Интервью с топ-менеджерами</span>
+    <span>·</span>
+    <span>AI-инструменты</span>
+    <span>·</span>
+    <span>CRM</span>
+    <span>·</span>
+    <span>PR-сопровождение форумов</span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <div class="left-col">
+
+    <div class="section-title">Опыт работы</div>
+
+    <div class="exp-card cyan fade-up">
+      <div class="exp-header">
+        <div class="exp-company">Газпром нефть, ПАО</div>
+        <div class="exp-period">Июль 2025 — н.в.</div>
+      </div>
+      <div class="exp-role">Специалист по аналитике и контенту</div>
+      <div class="exp-metrics">
+        <div class="metric-chip cyan">200+ контактов</div>
+        <div class="metric-chip cyan">500+ записей CRM</div>
+        <div class="metric-chip cyan">50+ презентаций</div>
+        <div class="metric-chip">+30% скорость обработки</div>
+      </div>
+      <ul class="exp-points">
+        <li>Запускал и сопровождал email-кампании отдела продаж: контент, редактура, координация</li>
+        <li>Оцифровал 200+ контактов с Петербургского газового форума и Нефтегаза</li>
+        <li>Упорядочил CRM-базу 500+ клиентских записей — повысил точность данных и скорость работы</li>
+        <li>Разработал систему обработки контактов после мероприятий, скорость выросла на 30%</li>
+      </ul>
+    </div>
+
+    <div class="exp-card fade-up">
+      <div class="exp-header">
+        <div class="exp-company">А8Экспо — @communalAI</div>
+        <div class="exp-period">Дек 2025 — Апр 2026</div>
+      </div>
+      <div class="exp-role">Контент-менеджер / SMM · B2B-медиа ЖКХ</div>
+      <div class="exp-metrics">
+        <div class="metric-chip">ER 16.42%</div>
+        <div class="metric-chip">ERR 20.1%</div>
+        <div class="metric-chip cyan">13 700 охват</div>
+        <div class="metric-chip">300 подп. без бюджета</div>
+        <div class="metric-chip cyan">ИЦ 4.2</div>
+      </div>
+      <ul class="exp-points">
+        <li>Выстроил редакционную систему, tone of voice и типологию контента с нуля</li>
+        <li>Создал библиотеку из 11 форматов нейрогенерации визуала (Midjourney / Leonardo AI)</li>
+        <li>Провёл live-репортаж с Национального форума ЖКХ в Сколково</li>
+        <li>Брал эксклюзивные интервью у первых лиц компаний-производителей</li>
+        <li>Партнёрская интеграция: удвоение аудитории за сутки</li>
+      </ul>
+    </div>
+
+    <div class="exp-card fade-up">
+      <div class="exp-header">
+        <div class="exp-company">LNG.Expert</div>
+        <div class="exp-period">Июль 2023 — Июль 2025</div>
+      </div>
+      <div class="exp-role">SMM-специалист / Контент-менеджер · Рынок СПГ и нефтегаза</div>
+      <div class="exp-metrics">
+        <div class="metric-chip">20 тыс. уник./мес.</div>
+        <div class="metric-chip">1000+ подп. органически</div>
+        <div class="metric-chip cyan">×67% участников форума</div>
+        <div class="metric-chip cyan">ТАСС, Интерфакс</div>
+      </div>
+      <ul class="exp-points">
+        <li>Вырастил сайт до 20 000 уникальных посетителей в месяц</li>
+        <li>Запустил Telegram-канал с нуля до 1000+ подписчиков органически</li>
+        <li>PR-сопровождение форума 3 года: участники выросли с 180 до 300</li>
+        <li>Рубрика «Лица отрасли» — интервью с топ-менеджерами нефтегаза</li>
+      </ul>
+    </div>
+
+    <div class="exp-card fade-up">
+      <div class="exp-header">
+        <div class="exp-company">Журнал «Полимерные материалы»</div>
+        <div class="exp-period">Янв 2023 — Июнь 2024</div>
+      </div>
+      <div class="exp-role">Контент-менеджер / SMM</div>
+      <div class="exp-metrics">
+        <div class="metric-chip">×12 трафик за 6 мес.</div>
+        <div class="metric-chip">850 подп. органически</div>
+        <div class="metric-chip cyan">440+ материалов</div>
+        <div class="metric-chip">−30% стоимость трафика</div>
+      </div>
+      <ul class="exp-points">
+        <li>Вырастил трафик нового сайта с 1 000 до 12 000 уников за 6 месяцев</li>
+        <li>PR-сопровождение двух отраслевых конференций по полимерам</li>
+        <li>250+ технических и 290+ маркетинговых материалов за 17 месяцев</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="channel-block">
+      <div class="channel-label">Авторский канал</div>
+      <div class="channel-name">Коммунальный<br><span>интеллект</span></div>
+      <div class="ch-stats">
+        <div class="ch-stat">
+          <div class="ch-stat-val cyan">16.4%</div>
+          <div class="ch-stat-label">ER</div>
+        </div>
+        <div class="ch-stat">
+          <div class="ch-stat-val cyan">20.1%</div>
+          <div class="ch-stat-label">ERR</div>
+        </div>
+        <div class="ch-stat">
+          <div class="ch-stat-val">4.2</div>
+          <div class="ch-stat-label">индекс цитир.</div>
+        </div>
+        <div class="ch-stat">
+          <div class="ch-stat-val" style="color:var(--orange)">7</div>
+          <div class="ch-stat-label">внешних СМИ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-title" style="font-size:11px;">Навыки</div>
+      <div class="skill-row">
+        <div class="skill-name" style="font-size:12px;">Telegram</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name" style="font-size:12px;">Figma</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name" style="font-size:12px;">Email</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name" style="font-size:12px;">AI-инструменты</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill cyan" style="width:90%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name" style="font-size:12px;">CRM / Excel</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name" style="font-size:12px;">PR / Форумы</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill cyan" style="width:88%"></div></div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-title" style="font-size:11px;">Инструменты</div>
+      <div class="tool-grid">
+        <span class="tool-tag">Claude AI</span>
+        <span class="tool-tag">ChatGPT</span>
+        <span class="tool-tag">Midjourney</span>
+        <span class="tool-tag">Leonardo AI</span>
+        <span class="tool-tag">Runway</span>
+        <span class="tool-tag">Figma</span>
+        <span class="tool-tag">CapCut</span>
+        <span class="tool-tag">TGStat</span>
+        <span class="tool-tag">Bitrix24</span>
+        <span class="tool-tag">Яндекс.Метрика</span>
+        <span class="tool-tag">MS Excel</span>
+        <span class="tool-tag">PowerPoint</span>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="section-title" style="font-size:11px;">Образование</div>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div>
+          <div class="edu-school">МГТУ им. Баумана</div>
+          <div class="edu-prog">Ракетно-космические комплексы · 2028</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-dot" style="background:var(--cyan)"></div>
+        <div>
+          <div class="edu-school">Цифровая кафедра МГТУ</div>
+          <div class="edu-prog">Руководитель продукта · 2025</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     СЕКЦИЯ: РАБОТЫ — нейрогенерации, дизайн, интервью
+     ═══════════════════════════════════════════════════════ -->
+<div class="works-section">
+  <div class="section-title" style="font-size:13px; margin-bottom:16px;">Работы</div>
+
+  <!-- Фильтры -->
+  <div class="works-tabs">
+    <button class="works-tab active" onclick="filterWorks('all', this)">Все</button>
+    <button class="works-tab" onclick="filterWorks('neuro', this)">Нейрогенерации</button>
+    <button class="works-tab" onclick="filterWorks('interview', this)">Интервью / дизайн</button>
+    <button class="works-tab" onclick="filterWorks('polymer', this)">Полимерные мат-лы</button>
+    <button class="works-tab" onclick="filterWorks('pres', this)">Презентации</button>
+    <button class="works-tab" onclick="filterWorks('texts', this)">Тексты</button>
+  </div>
+
+  <!-- ВИЗУАЛЬНЫЕ РАБОТЫ -->
+  <div class="works-grid" id="worksGrid">
+
+    <!--
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      НЕЙРОГЕНЕРАЦИИ
+      Папка: images/neuro/
+      Имена файлов: pipe.jpg, cosmonaut.jpg, analytics.jpg,
+                    helmet.jpg, tinder.jpg, skidloader.jpg
+      Размер: ~800×600px, JPG, качество 80–85%
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    -->
+    <!-- 1 -->
+    <div class="work-card" data-cat="neuro">
+      <img class="work-img" src="images/neuro/pipe.jpg" alt="Нейрогенерация — пластырь на трубе"
+           onerror="this.parentNode.insertBefore(makePlaceholder('neuro/pipe.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag">@communalAI · нейрогенерация</div>
+        <div class="work-title">Меры для выхода из инвестиционного кризиса в ЖКХ</div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="work-card" data-cat="neuro">
+      <img class="work-img" src="images/neuro/cosmonaut.jpg" alt="Космонавт с мусорным баком"
+           onerror="this.parentNode.insertBefore(makePlaceholder('neuro/cosmonaut.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag">@communalAI · нейрогенерация</div>
+        <div class="work-title">Что космос дал коммунальному хозяйству</div>
+      </div>
+    </div>
+
+    <!-- 3: interview1 -->
+    <div class="work-card" data-cat="interview">
+      <img class="work-img" src="images/interview/interview1.jpg" alt="Интервью Гаспарян YaCu Robotics"
+           onerror="this.parentNode.insertBefore(makePlaceholder('interview/interview1.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag cyan">@communalAI · Figma · обложка интервью</div>
+        <div class="work-title">Роберт Гаспарян, YaCu Robotics: «99% роботов едут хуже, чем заявлено»</div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="work-card" data-cat="neuro">
+      <img class="work-img" src="images/neuro/analytics.jpg" alt="3D рендер аналитики 14.5%"
+           onerror="this.parentNode.insertBefore(makePlaceholder('neuro/analytics.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag">@communalAI · нейрогенерация</div>
+        <div class="work-title">Банк России снизил ключевую ставку до 14,5%</div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="work-card" data-cat="neuro">
+      <img class="work-img" src="images/neuro/helmet.jpg" alt="Каска и костюм в классе"
+           onerror="this.parentNode.insertBefore(makePlaceholder('neuro/helmet.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag">@communalAI · нейрогенерация</div>
+        <div class="work-title">В управлении МКД вводится обязательная оценка квалификации</div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="work-card" data-cat="neuro">
+      <img class="work-img" src="images/neuro/tinder.jpg" alt="Тиндер-карточки коммунальных технологий"
+           onerror="this.parentNode.insertBefore(makePlaceholder('neuro/tinder.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag">@communalAI · нейрогенерация · спецпроект</div>
+        <div class="work-title">Tinder в ЖКХ: свайпаем технологии, от которых пора отказаться</div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="work-card" data-cat="neuro">
+      <img class="work-img" src="images/neuro/skidloader.jpg" alt="Скидлоадер на рассвете"
+           onerror="this.parentNode.insertBefore(makePlaceholder('neuro/skidloader.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag">@communalAI · нейрогенерация · дайджест</div>
+        <div class="work-title">Коммунальный дайджест: закупки техники, износ теплосетей</div>
+      </div>
+    </div>
+
+    <!-- 8: interview2 — 4 карточки после interview1 -->
+    <div class="work-card" data-cat="interview">
+      <img class="work-img" src="images/interview/interview2.jpg" alt="Интервью Макаров МАКСTЕМ"
+           onerror="this.parentNode.insertBefore(makePlaceholder('interview/interview2.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag cyan">@communalAI · Figma · обложка интервью</div>
+        <div class="work-title">Вячеслав Макаров, МАКСTЕМ: «Граница — не в технологии, а в экономике»</div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="work-card" data-cat="interview">
+      <img class="work-img" src="images/interview/digest.jpg" alt="Дайджест glassmorphism"
+           onerror="this.parentNode.insertBefore(makePlaceholder('interview/digest.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag cyan">@communalAI · Figma · дайджест</div>
+        <div class="work-title">Коммунальный дайджест: льготный лизинг, кадры для ЖКХ</div>
+      </div>
+    </div>
+
+    <!--
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ПОЛИМЕРНЫЕ МАТЕРИАЛЫ
+      Папка: images/polymer/
+      Имена: pattern.jpg, single.jpg, grangaro.jpg
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    -->
+    <div class="work-card" data-cat="polymer">
+      <img class="work-img" src="images/polymer/pattern.jpg" alt="Обложки журнала паттерн"
+           onerror="this.parentNode.insertBefore(makePlaceholder('polymer/pattern.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag muted">Полимерные материалы · дизайн обложки</div>
+        <div class="work-title">Октябрьский номер — «Качество и контроль»</div>
+      </div>
+    </div>
+
+    <div class="work-card" data-cat="polymer">
+      <img class="work-img" src="images/polymer/single.jpg" alt="Обложка журнала"
+           onerror="this.parentNode.insertBefore(makePlaceholder('polymer/single.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag muted">Полимерные материалы · дизайн обложки</div>
+        <div class="work-title">Апрельский номер — «Эластомеры», «Экструзия»</div>
+      </div>
+    </div>
+
+    <div class="work-card" data-cat="polymer">
+      <img class="work-img" src="images/polymer/grangaro.jpg" alt="Gran Garo"
+           onerror="this.parentNode.insertBefore(makePlaceholder('polymer/grangaro.jpg'), this); this.remove();">
+      <div class="work-meta">
+        <div class="work-tag muted">Полимерные материалы · дизайн обложки</div>
+        <div class="work-title">Февральский номер — «Периферийное оборудование»</div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /works-grid -->
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       ПРЕЗЕНТАЦИИ
+       ═══════════════════════════════════════════════════════ -->
+  <div style="margin-top: 28px;" id="presSection" data-cat-section="pres">
+    <div class="section-title" style="font-size:12px; margin-bottom:16px;">Дизайн презентаций — МИЭЛЬ (фриланс, 2025)</div>
+
+    <!--
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ПРЕЗЕНТАЦИЯ 1
+      Папка: images/pres1/
+      Имена: slide1.jpg, slide2.jpg, slide3.jpg  (первые 3 слайда)
+      Размер: ~1280×800px, JPG 80%
+      Ссылка на полную версию (Google Drive / Figma): см. атрибут href ниже
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    -->
+    <div class="pres-card">
+      <div class="pres-header">
+        <div>
+          <div class="pres-label">Риелторская презентация · Figma</div>
+          <div class="pres-name">ЖК Вилланж — Саляма Адиля, 75 млн ₽</div>
+        </div>
+        <div style="font-size:12px;color:var(--muted);">10 слайдов</div>
+      </div>
+      <div class="pres-slides">
+        <div class="pres-slide">
+          <img src="images/pres1/slide1.jpg" alt="Слайд 1"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="pres-slide-placeholder" style="display:none;">slide1.jpg</div>
+        </div>
+        <div class="pres-slide">
+          <img src="images/pres1/slide2.jpg" alt="Слайд 2"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="pres-slide-placeholder" style="display:none;">slide2.jpg</div>
+        </div>
+        <div class="pres-slide">
+          <img src="images/pres1/slide3.jpg" alt="Слайд 3"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="pres-slide-placeholder" style="display:none;">slide3.jpg</div>
+        </div>
+      </div>
+      <div class="pres-footer">
+        <div style="font-size:12px;color:var(--muted);">Figma · 10 слайдов · реальный объект</div>
+        <!--
+          ЗАМЕНИ href на ссылку Google Drive или Figma на полную презентацию
+          Если нет публичной ссылки — удали этот блок
+        -->
+        <a href="#" class="pres-view-btn" target="_blank" rel="noopener">
+          Смотреть полностью
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!--
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ПРЕЗЕНТАЦИЯ 2
+      Папка: images/pres2/
+      Имена: slide1.jpg, slide2.jpg, slide3.jpg
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    -->
+    <div class="pres-card">
+      <div class="pres-header">
+        <div>
+          <div class="pres-label">Риелторская презентация · Figma</div>
+          <div class="pres-name">Большая Дорогомиловская, 8 — вид на набережную</div>
+        </div>
+        <div style="font-size:12px;color:var(--muted);">7 слайдов</div>
+      </div>
+      <div class="pres-slides">
+        <div class="pres-slide">
+          <img src="images/pres2/slide1.jpg" alt="Слайд 1"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="pres-slide-placeholder" style="display:none;">slide1.jpg</div>
+        </div>
+        <div class="pres-slide">
+          <img src="images/pres2/slide2.jpg" alt="Слайд 2"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="pres-slide-placeholder" style="display:none;">slide2.jpg</div>
+        </div>
+        <div class="pres-slide">
+          <img src="images/pres2/slide3.jpg" alt="Слайд 3"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="pres-slide-placeholder" style="display:none;">slide3.jpg</div>
+        </div>
+      </div>
+      <div class="pres-footer">
+        <div style="font-size:12px;color:var(--muted);">Figma · 7 слайдов · реальный объект</div>
+        <a href="#" class="pres-view-btn" target="_blank" rel="noopener">
+          Смотреть полностью
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <!-- /presSection -->
+
+
+  <!-- ТЕКСТЫ — раскрывающиеся карточки -->
+  <div style="margin-top:28px;" id="textsSection" data-cat-section="texts">
+    <div class="section-title" style="font-size:12px; margin-bottom:4px;">Тексты — @communalAI</div>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:20px;">
+      Нажми «читать полностью» — текст откроется прямо здесь
+    </p>
+
+    <div class="texts-list">
+
+      <!-- 1 — ФАС -->
+      <div class="tcard">
+        <div class="tcard-head" onclick="toggleText(this)">
+          <div class="tcard-left">
+            <span class="text-card-type analytics">Аналитика</span>
+            <div class="tcard-title">ФАС подвела итоги тарифной политики</div>
+            <div class="tcard-lead">ФАС представила итоги тарифного регулирования и обозначила направления на ближайшие годы. Исполнение инвестиционных программ в теплоснабжении, водоснабжении и водоотведении снижается второй год подряд: в 2024 году план выполнен на 86%, в 2025-м — на 80%.</div>
+          </div>
+          <div class="tcard-toggle">
+            <span class="tcard-toggle-label">Читать полностью</span>
+            <svg class="tcard-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="tcard-body">
+          <div class="tcard-content">
+            <p><strong>Инвестиции в инфраструктуру</strong></p>
+            <p>Исполнение инвестиционных программ в теплоснабжении, водоснабжении и водоотведении снижается второй год подряд: в 2024 году план выполнен на 86%, в 2025-м — на 80%.</p>
+            <p>На 2026 год план составляет 431,4 млрд рублей. При сохранении текущей динамики фактическое исполнение может составить около 345 млрд.</p>
+            <p><strong>Концессии: новые правила</strong></p>
+            <p>С 1 марта 2026 года вступил в силу федеральный закон, изменивший правила концессионных соглашений. Три ключевых изменения: согласовывать с ФАС теперь нужно только существенные условия соглашений; концессионер обязан сообщать о получении дополнительных бюджетных средств или имущества; появилась возможность перезаключить соглашение с действующим концессионером без новых торгов.</p>
+            <p>С 1 сентября 2026 года вступит в силу ещё один закон — о единых требованиях к контролю за исполнением инвестпрограмм и механизме регуляторных соглашений.</p>
+            <p><strong>Цифровизация тарифного регулирования</strong></p>
+            <p>В марте 2026 года закреплён правовой статус ФГИС «Тариф». Все регионы уже загрузили в систему экспертные заключения — переход на электронный мониторинг завершён.</p>
+            <p><strong>Контроль за тарифами</strong></p>
+            <p>В 2025 году число досудебных споров по тарифам выросло на 70%, ФАС удовлетворила 64% требований. Из тарифов исключено 50,23 млрд рублей необоснованных расходов: электроэнергетика — 25,22 млрд; обращение с ТКО — 11,82 млрд; теплоснабжение — 10,85 млрд; водоснабжение — 2,13 млрд.</p>
+            <p>Типичные нарушения — некорректный расчёт расходов на топливо, ошибки в определении объёмов услуг, отсутствие обоснования отдельных статей затрат.</p>
+            <p><strong>Полномочия ФАС расширены</strong></p>
+            <p>Два закона, принятых в марте 2026 года, дают ФАС реальные рычаги влияния на региональных тарифных регуляторов. Руководителей региональных тарифных органов теперь обязаны дисквалифицировать при трёх и более неисполнениях решений ФАС за год. Служба получила право принудительно пересматривать предельные уровни цен в электроэнергетике, а не только фиксировать нарушения.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 — Регионы и лизинг -->
+      <div class="tcard">
+        <div class="tcard-head" onclick="toggleText(this)">
+          <div class="tcard-left">
+            <span class="text-card-type news">Новость</span>
+            <div class="tcard-title">Регионы ищут деньги на коммунальную технику — тендеры на лизинг</div>
+            <div class="tcard-lead">Сразу несколько регионов разместили тендеры на финансовую аренду коммунальной и дорожной техники — лизинг остаётся основным инструментом обновления парков в условиях высокой ключевой ставки.</div>
+          </div>
+          <div class="tcard-toggle">
+            <span class="tcard-toggle-label">Читать полностью</span>
+            <svg class="tcard-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="tcard-body">
+          <div class="tcard-content">
+            <p><strong>Тамбов — 184,7 млн рублей</strong></p>
+            <p>Муниципальная «Дирекция городских дорог» планирует получить в лизинг комбинированные дорожные машины, коммунальные машины для содержания дорог и автосамосвалы. Вся техника — только российского производства, иностранные аналоги прямо запрещены.</p>
+            <p><strong>Кировская область — 184,7 млн рублей</strong></p>
+            <p>Региональный центр закупок объединил 21 лот на лизинг строительно-дорожной и коммунальной техники: комбинированные дорожные машины и прицепы. На все позиции распространяется запрет закупок иностранных аналогов.</p>
+            <p><strong>Удмуртия — 11,3 млн рублей</strong></p>
+            <p>Управление благоустройства Сарапула планирует взять в лизинг коммунальную машину для содержания дорог. Требования аналогичны — только российское производство.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 — Кадровый дефицит -->
+      <div class="tcard">
+        <div class="tcard-head" onclick="toggleText(this)">
+          <div class="tcard-left">
+            <span class="text-card-type news">Новость</span>
+            <div class="tcard-title">Кадровый дефицит в ЖКХ: рост вакансий не решает проблему</div>
+            <div class="tcard-lead">Спрос на работников ЖКХ в первом квартале 2026 года вырос на 47%, средняя зарплата достигла 66,1 тыс. рублей — на 11% больше, чем год назад. Быстрее всего растёт спрос на ремонтников, контролёров и плотников.</div>
+          </div>
+          <div class="tcard-toggle">
+            <span class="tcard-toggle-label">Читать полностью</span>
+            <svg class="tcard-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="tcard-body">
+          <div class="tcard-content">
+            <p>Спрос на работников ЖКХ в первом квартале 2026 года вырос на 47%, средняя зарплата достигла 66,1 тыс. рублей — на 11% больше, чем год назад. Быстрее всего растёт спрос на ремонтников, контролёров и плотников.</p>
+            <p>Рост числа вакансий говорит о повышенном спросе, а не решает проблему. Более того, зарплата в 66 тыс. рублей — это зачастую компенсация за сверхурочные и работу в сложных условиях, а не базовая ставка. С учётом нагрузки и ответственности оплата не конкурентна по сравнению с другими отраслями с аналогичными требованиями.</p>
+            <p>Чтобы удержать кадры и привлечь молодёжь, необходимо: системно повышать зарплаты с дифференциацией по сложности и графику; развивать соцпакет — медицинское страхование, программы обучения и карьерного роста; автоматизировать рутинные процессы, чтобы высвободить людей для задач, требующих квалификации.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 — ГЧП -->
+      <div class="tcard">
+        <div class="tcard-head" onclick="toggleText(this)">
+          <div class="tcard-left">
+            <span class="text-card-type analytics">Аналитика</span>
+            <div class="tcard-title">ГЧП в ЖКХ: как частные деньги идут в коммунальную инфраструктуру</div>
+            <div class="tcard-lead">В 2025 году на ЖКХ пришлось 61% всех новых концессий по объёму инвестиций — больше, чем на транспорт.</div>
+          </div>
+          <div class="tcard-toggle">
+            <span class="tcard-toggle-label">Читать полностью</span>
+            <svg class="tcard-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="tcard-body">
+          <div class="tcard-content">
+            <p>В 2025 году на ЖКХ пришлось 61% всех новых концессий по объёму инвестиций — больше, чем на транспорт. Показательный пример — концессия на реконструкцию водоснабжения и водоотведения в Комсомольске-на-Амуре: 123 млрд рублей частных инвестиций на системное обновление коммунальной инфраструктуры целого города.</p>
+            <p><strong>Итоги 2025 года:</strong> 249 новых соглашений на 567 млрд рублей; 86% от этой суммы — внебюджетные инвестиции (489 млрд); всего накоплено 4,5 тыс. соглашений на 7,7 трлн рублей, из них 5,6 трлн — частные деньги.</p>
+            <p><strong>Лидеры по объёму инвестиций:</strong> Московская область — 387 млрд; Москва — 381 млрд; Санкт-Петербург — 352 млрд.</p>
+            <p>Активнее всего механизм используют регионы с более скромными бюджетами — Амурская, Тамбовская, Кировская области, где счёт соглашений идёт на сотни.</p>
+            <p><strong>Ключевой вопрос — качество проектов.</strong> В 2025 году Минэкономразвития обновило методику оценки ГЧП: теперь помимо финансовых показателей оцениваются востребованность и реальный спрос на услугу.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 — Износ теплосетей -->
+      <div class="tcard">
+        <div class="tcard-head" onclick="toggleText(this)">
+          <div class="tcard-left">
+            <span class="text-card-type analytics">Аналитика</span>
+            <div class="tcard-title">Износ теплосетей достиг 70%: как технологии могут изменить ситуацию</div>
+            <div class="tcard-lead">Около половины из 170 тысяч км тепловых сетей в России нуждаются в замене. Износ в ряде городов достиг 60–70%, при этом ежегодно обновляется только 2,2% сетей вместо запланированных 5%.</div>
+          </div>
+          <div class="tcard-toggle">
+            <span class="tcard-toggle-label">Читать полностью</span>
+            <svg class="tcard-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="tcard-body">
+          <div class="tcard-content">
+            <p>Около половины из 170 тысяч км тепловых сетей в России нуждаются в замене. Износ в ряде городов достиг 60–70%, при этом ежегодно обновляется только 2,2% сетей вместо запланированных 5%. До 80% инцидентов в централизованном теплоснабжении происходят именно на изношенных участках.</p>
+            <p>По данным Ростехнадзора, в зоне ненадёжного теплоснабжения проживают более 41 млн человек. На модернизацию ЖКХ до 2030 года запланировано 4,5 трлн рублей, но реальная потребность как минимум вдвое выше.</p>
+            <p><strong>Технологический путь ускорения</strong></p>
+            <p>Предиктивная аналитика и цифровые двойники — системы мониторинга позволяют выявлять критические участки до их отказа. Роботизированная диагностика — внутритрубные роботы проводят инспекцию без вскрытия грунта. Современные материалы и бестраншейная прокладка продлевают срок службы новых участков до 30–50 лет против 15–20 у традиционных решений.</p>
+            <p><strong>Производительность труда как ключевой фактор</strong></p>
+            <p>Программа повышения производительности труда в ЖКХ на 2025–2030 годы ставит задачу — рост эффективности на 15,8% к 2030 году. Это должно компенсировать дефицит почти 20 тысяч работников.</p>
+            <p>Пилотные проекты с цифровыми двойниками, роботизированной диагностикой и предиктивной аналитикой уже показали результат. Задача — сделать их стандартом, а не исключением.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 — Рынок коммунальной техники -->
+      <div class="tcard">
+        <div class="tcard-head" onclick="toggleText(this)">
+          <div class="tcard-left">
+            <span class="text-card-type analytics">Аналитика</span>
+            <div class="tcard-title">Рынок коммунальной техники: устойчивость на фоне турбулентности</div>
+            <div class="tcard-lead">Рынок спецтехники развивается под сильным влиянием внешних факторов — прежде всего монетарной политики и мер госрегулирования. Повышение ключевой ставки в 2024 году сделало заёмное финансирование дорогим и ограничило инвестиционные возможности ключевых потребителей.</div>
+          </div>
+          <div class="tcard-toggle">
+            <span class="tcard-toggle-label">Читать полностью</span>
+            <svg class="tcard-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="tcard-body">
+          <div class="tcard-content">
+            <p>Рынок спецтехники в последние годы развивается под сильным влиянием внешних факторов — прежде всего монетарной политики и мер госрегулирования. Повышение ключевой ставки в 2024 году сделало заёмное финансирование дорогим и ограничило инвестиционные возможности ключевых потребителей спецтехники. Это привело к отложенному спросу и замедлению обновления парков.</p>
+            <p>В 2025 году началось постепенное снижение ключевой ставки, что формирует предпосылки для оживления рынка. Однако эффект будет отложенным — большинство сегментов смогут вернуться к росту не ранее середины 2026 года.</p>
+            <p><strong>Коммунальная техника: самый стабильный сегмент</strong></p>
+            <p>На этом фоне рынок коммунальной техники выглядит заметно устойчивее. Его ключевая особенность — меньшая зависимость от рыночных циклов за счёт муниципального спроса и программ развития городской среды. К 2030 году возможны два сценария: базовый — рост продаж до 7,2 тыс. единиц; восстановительный — до 8,2 тыс. единиц.</p>
+            <p><strong>Импортозамещение и локализация</strong></p>
+            <p>В 2024 году доля российского производства коммунальной техники составила около 38%. Основными импортёрами остаются Беларусь и Китай. Меры господдержки — субсидии, льготный лизинг, программы обновления парка — создают условия для роста локализации.</p>
+            <p>Коммунальная техника — один из самых устойчивых сегментов рынка спецмашин. Именно здесь в ближайшие годы будут формироваться ключевые точки роста — от обновления парка до внедрения новых технологий и локализованных производств.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- /textsSection -->
+
+</div>
+<!-- /works-section -->
+
+
+<footer>
+  <p>© 2026 Егор Агауров · <a href="mailto:agaurovegor@yandex.ru">agaurovegor@yandex.ru</a> · <a href="https://t.me/agaurov" target="_blank" rel="noopener">@agaurov</a></p>
+</footer>
+
+
+<script>
+// Раскрытие текстовых карточек
+function toggleText(head) {
+  const card = head.closest('.tcard');
+  const label = head.querySelector('.tcard-toggle-label');
+  card.classList.toggle('open');
+  label.textContent = card.classList.contains('open') ? 'Свернуть' : 'Читать полностью';
+}
+
+// Плейсхолдер если картинка не загружена
+function makePlaceholder(name) {
+  const d = document.createElement('div');
+  d.className = 'img-placeholder';
+  d.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:0.4">
+    <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M3 16l5-5 4 4 3-3 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span>${name}</span>`;
+  return d;
+}
+
+// Фильтр по категориям
+function filterWorks(cat, btn) {
+  document.querySelectorAll('.works-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Карточки в основной сетке
+  document.querySelectorAll('#worksGrid .work-card').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+  });
+
+  // Секция презентаций
+  const pres = document.getElementById('presSection');
+  if (pres) pres.style.display = (cat === 'all' || cat === 'pres') ? '' : 'none';
+
+  // Секция текстов
+  const texts = document.getElementById('textsSection');
+  if (texts) texts.style.display = (cat === 'all' || cat === 'texts') ? '' : 'none';
+}
+</script>
+
+</body>
+</html>
